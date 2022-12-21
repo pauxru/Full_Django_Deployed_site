@@ -12,21 +12,29 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+# import json
+
+#with open('/etc/config.json') as config_file:
+#	config = json.load(config_file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^fa%4w+-312eom%4w8+h@443&cxnm6addqnt#az0v+0lbx$qih'
+# SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY =  'django-insecure-^fa%4w+-312eom%4w8+h@443&cxnm6addqnt#az0v+0lbx$qih'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.pawadtech.one','pawadtech.one','86.48.31.43']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,11 +88,11 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR /'db.sqlite3',
     }
 }
 
-
+#
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -119,6 +127,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
 
 # Default primary key field type
@@ -139,5 +148,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'rukwaropaul12@gmail.com'
-EMAIL_HOST_PASSWORD= 'password'
+# EMAIL_HOST_USER = config.get('EMAIL_USER')
+EMAIL_HOST_USER =  'rukwaropaul12@gmail.com'
+# EMAIL_HOST_PASSWORD= config.get('EMAIL_PASS')
+EMAIL_HOST_PASSWORD= 'notpassword'

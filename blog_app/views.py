@@ -95,3 +95,6 @@ def about(request):
 
 def mybio(request):
     return render(request, 'blog_app/mybio.html')
+
+def mytest(request):
+    return render(request, 'blog_app/portfolio.html')
